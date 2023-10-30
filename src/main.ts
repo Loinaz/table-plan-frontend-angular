@@ -1,7 +1,11 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { AppModule } from "./app/app.module";
 
-import { AppModule } from './app/app.module';
+const port = process.env["PORT"] || 4200;
 
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+document.addEventListener("DOMContentLoaded", () => {
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .then(success => console.log(`Application démarrée sur le port ${port}`))
+    .catch(err => console.error(err));
+});
